@@ -1,0 +1,12 @@
+# application-uat.yml
+spring:
+  datasource:
+    mariadb:
+      url: jdbc:mariadb://uat-host:3306/mydb
+      username: ${MARIADB_USERNAME}
+      password: ${MARIADB_PASSWORD}
+
+    postgres:
+      url: jdbc:postgresql://uat-pg:5432/mydb
+      username: ${POSTGRES_USERNAME}
+      password: ${POSTGRES_PASSWORD}

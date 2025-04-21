@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    mariadb:
+      url: jdbc:mariadb://prod-maria-host:3306/mydb
+      username: prod_user
+      password: prod_pass
+
+    postgres:
+      url: jdbc:postgresql://prod-postgres-host:5432/mydb
+      username: prod_pg_user
+      password: prod_pg_pass
