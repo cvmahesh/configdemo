@@ -17,7 +17,7 @@ public class ConfigdemoApplication  {
 	public static void main(String[] args) {
 		SpringApplication.run(ConfigdemoApplication.class, args);
 		 
-		System.exit(0);
+		//System.exit(0);
 		
 		//for prod pass as args: --spring.profiles.active=prod 
 	}
