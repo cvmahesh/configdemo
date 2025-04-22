@@ -1,8 +1,11 @@
 package com.example.configdemo;
 
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,33 +32,33 @@ public class PostgresDbConfig {
 				.build();
 	}
 
-//	@Bean(name = "mariaDbJdbcTemplate")
-//	public JdbcTemplate mariaDbJdbcTemplate(@Qualifier("mariaDbDataSource") DataSource ds) {
-//		this.jdbcTemplate = new JdbcTemplate(ds);
-//		return this.jdbcTemplate;
-//	}
-//
-//	//✅ Method 1: Check database availability
-//	public boolean isDatabaseUp() {
-//		try {
-//			Integer result = jdbcTemplate.queryForObject("SELECT 1", Integer.class);
-//			return result != null && result == 1;
-//		} catch (Exception e) {
-//			System.err.println("❌ Could not connect to MariaDB: " + e.getMessage());
-//			return false;
-//		}
-//	}
-//
-//	// ✅ Method 2: Fetch user names from 'users' table
-//	public List<String> fetchUserNames() {
-//		String sql = "SELECT name FROM users";
-//		try {
-//			return jdbcTemplate.queryForList(sql, String.class);
-//		} catch (Exception e) {
-//			System.err.println("❌ Failed to fetch users: " + e.getMessage());
-//			return List.of();
-//		}
-//	}
+	@Bean(name = "postgresDbJdbcTemplate")
+	public JdbcTemplate mariaDbJdbcTemplate(@Qualifier("postgresDbDataSource") DataSource ds) {
+		this.jdbcTemplate = new JdbcTemplate(ds);
+		return this.jdbcTemplate;
+	}
+
+	//✅ Method 1: Check database availability
+	public boolean isDatabaseUp() {
+		try {
+			Integer result = jdbcTemplate.queryForObject("SELECT 1", Integer.class);
+			return result != null && result == 1;
+		} catch (Exception e) {
+			System.err.println("❌ Could not connect to MariaDB: " + e.getMessage());
+			return false;
+		}
+	}
+
+	// ✅ Method 2: Fetch user names from 'users' table
+	public List<String> fetchUserNames() {
+		String sql = "SELECT name FROM users";
+		try {
+			return jdbcTemplate.queryForList(sql, String.class);
+		} catch (Exception e) {
+			System.err.println("❌ Failed to fetch users: " + e.getMessage());
+			return List.of();
+		}
+	}
 
 
 	// @Bean(name = "mariaDbJdbcTemplate")

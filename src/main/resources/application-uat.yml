@@ -2,11 +2,15 @@
 spring:
   datasource:
     mariadb:
-      url: jdbc:mariadb://uat-host:3306/mydb
-      username: ${MARIADB_USERNAME}
-      password: ${MARIADB_PASSWORD}
+      url: jdbc:mariadb://your-host:3306/your-db
+      username: youruser
+      password: yourpass
+      sslCa: /etc/certs/ca.pem
+      clientCert: /etc/certs/client-cert.p12
+      clientCertPassword: yourkeypass
 
     postgres:
       url: jdbc:postgresql://uat-pg:5432/mydb
       username: ${POSTGRES_USERNAME}
       password: ${POSTGRES_PASSWORD}
+ 
